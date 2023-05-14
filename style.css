@@ -1,0 +1,145 @@
+* {
+  padding: 0;
+  margin: 0;
+  border-radius: 5px;
+}
+
+body {
+  min-height: 100vh;
+  background: no-repeat center/cover url(img/table.gif);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+}
+
+#calc-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+#calculator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 425px;
+  padding: 50px 30px;
+  background-color: rgb(34, 38, 49);
+  border-radius: 20px;
+  box-shadow: 20px 20px 35px black;
+  margin-top: 50px;
+}
+
+#display {
+  height: 95px;
+  width: 395px;
+  flex-grow: 1;
+  border: 2px solid black;
+  background-color: rgb(82, 100, 88);
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 30px black;
+  display: flex; 
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding: 15px;
+  font-size: 50px;
+}
+
+#calculator-pad {
+  display: flex; 
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#logo {
+  font-size: 35px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#solar-cell{
+  display: flex;
+}
+
+#solar-cell div {
+  width: 40px;
+  height: 60px;
+  background-color: rgb(81, 53, 49);
+  border: 2px solid black;
+  border-radius: 0;
+  box-shadow: 3px 3px 10px black;
+}
+
+#solar-cell div:first-child {
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+#solar-cell div:last-child {
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+button {
+  width: 100px;
+  height: 65px;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  border: 2px solid black;
+  box-shadow: 3px 3px 5px black;
+}
+
+button:hover {
+  opacity: 70%;
+}
+
+.operand {
+  background-color: rgb(97, 97, 97);
+}
+
+.operator {
+  background-color: rgb(255, 255, 253);
+  color: black;
+}
+
+.backtrack {
+  background-color: rgb(201, 132, 53);
+}
+
+#footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#footer {
+  font-weight: bold;
+  font-size: 20px;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  backdrop-filter: blur(3px);
+  margin-bottom: 10px;
+}
+
+#footer a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+#footer img {
+  aspect-ratio: 1/1;
+  width: 20px; 
+}
