@@ -36,22 +36,29 @@ class CalculatorInput {
 
   #isOperandInputValid(input) {
     if (input === DECIMAL) {
-      if (this.#lastInputTypeDefined() === OPERAND && this.#isNotEmptyString(this.#lastInputDefined())) {
+      //Prevent more than one decimal point in operands
+      if (this.#lastInputTypeDefined() === OPERAND && this.#isNotEmptyString(this.#lastOperandDefined()) 
+        && this.#isEqualsOperation == false) {
         let multipleDecimalPoints = /[.]+/
-        return !(multipleDecimalPoints.test(this.#lastInputDefined()));
+        return !(multipleDecimalPoints.test(this.#lastOperandDefined()));
       }
+      //If result is computed, decimal point input is invalid
       return false;
     }
-    return true;
+    //Limit operand input to 16 characters
+    return (this.#isNotEmptyString(this.#operator)) ? this.#secOperand.length <= 15 : this.#firstOperand.length <= 15
   }
 
   #isOperatorInputValid(input) {
     if (input !== EQUAL && input !== SIGN) { 
+      //Allows you to start a new computation with the answer as the first operand.
       if (this.#isEqualsOperation) return true;
+      //No operator if first operand not defined
       else return this.#isNotEmptyString(this.#firstOperand);
     } else if (input === SIGN) {
       return this.#lastInputTypeDefined() === OPERAND;
     } else {
+      //If operator is equals, both operands need to be defined
       return this.#isNotEmptyString(this.#firstOperand) && this.#isNotEmptyString(this.#secOperand);
     }
   }
@@ -78,14 +85,17 @@ class CalculatorInput {
   #processOperatorInput(input) {
     if (input !== SIGN) {
       if (input !== EQUAL) {
-        if (this.#isEqualsOperation) this.#firstOperand = this.#answer;
-        this.#deleteEqualsOperation();
+        //If operator is clicked after result is computed, 
+        //take it as first operand and set the operator
+        this.#setAnswerAsFirstOperand();
         this.#operator = input;
       } else {
          this.#isEqualsOperation = true;
       };
     } else {
-      this.#deleteEqualsOperation();
+      //If operator is clicked after result is computed, 
+      //take it as first operand and set the sign
+      this.#setAnswerAsFirstOperand();
       if (this.#lastInputTypeDefined() === OPERATOR) this.#delete();
       (this.#isNotEmptyString(this.#secOperand)) ? this.#secOperand *= -1 : this.#firstOperand *= -1;
     }
@@ -103,7 +113,7 @@ class CalculatorInput {
     else if (this.#isNotEmptyString(this.#firstOperand)) return OPERAND;
   }
 
-  #lastInputDefined() {
+  #lastOperandDefined() {
     if (this.#isNotEmptyString(this.#secOperand)) return this.#secOperand;
     else if (this.#isNotEmptyString(this.#firstOperand)) return this.#firstOperand;
     return "";
@@ -119,9 +129,9 @@ class CalculatorInput {
   }
 
   #delete() {
-    if (this.#isNotEmptyString(this.#secOperand)) this.#secOperand = "";
-    else if (this.#isNotEmptyString(this.#operator)) this.#operator = "";
-    else if (this.#isNotEmptyString(this.#firstOperand)) this.#firstOperand = "";
+    if (this.#isNotEmptyString(this.#secOperand)) this.#secOperand = this.#secOperand.slice(0, -1);
+    else if (this.#isNotEmptyString(this.#operator)) this.#operator = this.#operator.slice(0, -1);
+    else if (this.#isNotEmptyString(this.#firstOperand)) this.#firstOperand = this.#firstOperand.slice(0, -1);
     this.#isEqualsOperation = false;
   }
 
@@ -132,6 +142,11 @@ class CalculatorInput {
   #deleteEqualsOperation() {
     if (this.#isEqualsOperation) this.#delete();
     this.#isEqualsOperation = false;
+  }
+
+  #setAnswerAsFirstOperand() {
+    if (this.#isEqualsOperation) this.#firstOperand = this.#answer.toString();
+    this.#deleteEqualsOperation();
   }
 
   #isNotEmptyString(input) {

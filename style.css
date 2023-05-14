@@ -49,7 +49,8 @@ body {
   justify-content: space-around;
   align-items: flex-end;
   padding: 15px;
-  font-size: 50px;
+  font-size: 40px;
+  text-align: right;
 }
 
 #calculator-pad {
@@ -102,6 +103,10 @@ button {
 
 button:hover {
   opacity: 70%;
+}
+
+button:focus {
+  outline: 2px solid white
 }
 
 .operand {

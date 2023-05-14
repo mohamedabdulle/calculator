@@ -12,14 +12,17 @@ const answer = document.querySelector("#answer");
 
 let calc = new CalculatorInput();
 
-calcPad.addEventListener("click", function (event) {
+calcPad.addEventListener("click", (event) => {
   event.preventDefault();
   operate(calc, event.target);
 });
 
-window.addEventListener("keydown", function (event) {
-  event.preventDefault();
-  operate(calc, document.querySelector(`button[data-key="${event.keyCode}"]`));
+window.addEventListener("keydown", (event) => {
+  let keyboardButton = document.querySelector(`button[data-key="${event.key}"]`);
+  if (keyboardButton != null) {
+    keyboardButton.focus()
+    operate(calc, keyboardButton);
+  }
 });
 
 function operate(calc, input) {
@@ -30,9 +33,7 @@ function operate(calc, input) {
 }
 
 function calculate(firstOperand, operator, secOperand) {
-  if (secOperand === "0") return "You can't divide by 0";
-  else if (firstOperand === "" || operator === "" || secOperand === "") return "";
-  else return roundAnswer(operation(firstOperand, operator, secOperand));
+  return roundAnswer(operation(firstOperand, operator, secOperand));
 }
 
 function operation(firstOperand, operator, secOperand) {
@@ -51,7 +52,7 @@ function operation(firstOperand, operator, secOperand) {
 }
 
 function roundAnswer(answer) {
-  return Math.round(answer * 100) / 100;
+  if (Number.isFinite(answer)) return Number(answer.toPrecision(10));
 }
 
 function setCalcDisplay(calc, calcAnswer) {
@@ -60,7 +61,7 @@ function setCalcDisplay(calc, calcAnswer) {
   formula.style = "";
 
   if (calc.isEqualsOperation) {
-    formula.style = "color: gray; font-size: 30px; ";
+    formula.style = "color: rgb(160, 160, 160); font-size: 30px; ";
     answer.innerText = calcAnswer;
     calc.answer = calcAnswer ;
   } 
