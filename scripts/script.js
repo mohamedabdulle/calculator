@@ -1,7 +1,7 @@
 import {CalculatorInput, AC} from "./calculator-input.js"
 
 const DIVIDE = "÷";
-const MULTIPLY = "*";
+const MULTIPLY = "x";
 const MODULO = "%";
 const SUBTRACT = "−";
 const ADD = "+";
