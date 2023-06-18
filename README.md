@@ -1,4 +1,4 @@
-# calculator
+# Calculator
 
 Here you have a basic calculator that can perform these arithmetic operations:
 * Division
@@ -7,6 +7,14 @@ Here you have a basic calculator that can perform these arithmetic operations:
 * Subtraction
 * Modulus
 * Negation
+
+![calculator](docs/calculator.png)
+
+## Info Links
+
+- [Click here to see the calculator](https://mohamedabdulle.github.io/calculator/)
+
+- [Link to the assignment details](https://www.theodinproject.com/lessons/foundations-calculator)
 
 ## Description
 
