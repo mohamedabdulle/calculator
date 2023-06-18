@@ -10,7 +10,7 @@ Here you have a basic calculator that can perform these arithmetic operations:
 
 ![calculator](docs/calculator.png)
 
-## Info Links
+## Links
 
 - [Click here to see the calculator](https://mohamedabdulle.github.io/calculator/)
 
