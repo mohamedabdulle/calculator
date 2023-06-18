@@ -25,15 +25,13 @@ There are some QOL features implemented to reduce the number of steps needed to 
 2. Delete will only delete the right most digit.
 
 3. If an answer is displayed:
-   * Clicking an operator will take the answer and construct a new expression consisting of the answer and operator.
-   * Clicking an operand will construct a new expression with just the operand defined.
-   * Clicking negation will take the answer and construct an expression consisting of the negated answer.
-   * Clicking delete will delete the answer and second operand, leaving just the original, first operand and operator.  
-<br>
+    - Clicking an operator will take the answer and construct a new expression consisting of the answer and operator.
+    - Clicking an operand will construct a new expression with just the operand defined.
+    - Clicking negation will take the answer and construct an expression consisting of the negated answer.
+    - Clicking delete will delete the answer and second operand, leaving just the original, first operand and operator.
+
 4. The calculator accepts keyboard input as well. The table below outlines the keyboard shortcuts that match the calculators
 numpad buttons.
-<br>
-<p align="center">
 
 |**Number Pad**  |**Keyboard Key**  |
 |----------------|------------------|
@@ -48,6 +46,4 @@ numpad buttons.
 | =              | Enter            |
 | .              | .                |
 | 0-9            | 0-9              |
-
-</p>
 
